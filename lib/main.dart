@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:seminar_app/constants.dart';
 
-import 'screens/intro.dart';
+import 'screens/onboarding/intro.dart';
 
 void main() => runApp(SeminarApp());
 
@@ -14,6 +14,7 @@ class SeminarApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: "Seminar App",
       theme: ThemeData(
+        // brightness: Brightness.light,
         fontFamily: kPoppinsfont,
         primaryColor: kprimaryColor,
         textTheme: TextTheme(
