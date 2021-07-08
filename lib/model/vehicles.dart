@@ -10,7 +10,12 @@ class Vehicle {
   Vehicle({this.name, this.url, this.description, this.cardColor, this.price});
 }
 
-final List<Vehicle> cars = [
+//get items
+List<Vehicle> get getCars => _cars;
+List<Vehicle> get getBigCars => _bigCars;
+List<Vehicle> get getBikes => _bikes;
+
+final List<Vehicle> _cars = [
   Vehicle(
     name: "Classic Car",
     url: "assets/images/cars/car1.png",
@@ -41,7 +46,7 @@ final List<Vehicle> cars = [
   ),
 ];
 
-final List<Vehicle> bigCars = [
+final List<Vehicle> _bigCars = [
   Vehicle(
     name: "Motorhome",
     url: "assets/images/big cars/car1.png",
@@ -76,7 +81,7 @@ final List<Vehicle> bigCars = [
   ),
 ];
 
-final List<Vehicle> bikes = [
+final List<Vehicle> _bikes = [
   Vehicle(
     name: "Vespa",
     url: "assets/images/bikes/bike1.png",
