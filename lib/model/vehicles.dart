@@ -20,28 +20,28 @@ final List<Vehicle> _cars = [
     name: "Classic Car",
     url: "assets/images/cars/car1.png",
     description: "Wanna ride the coolest sport car in the world?",
-    cardColor: Color(0xB67853),
+    cardColor: Color(0xFFB67853),
     price: 34,
   ),
   Vehicle(
     name: "Sport Car",
     url: "assets/images/cars/car2.png",
     description: "Wanna ride the coolest sport car in the world?",
-    cardColor: Color(0x60B5F4),
+    cardColor: Color(0xFF60B5F4),
     price: 55,
   ),
   Vehicle(
     name: "Flying Car",
     url: "assets/images/cars/car3.png",
     description: "Wanna ride the coolest sport car in the world?",
-    cardColor: Color(0x8382C2),
+    cardColor: Color(0xFF8382C2),
     price: 500,
   ),
   Vehicle(
     name: "Electric Car",
     url: "assets/images/cars/car4.png",
     description: "Wanna ride the coolest sport car in the world?",
-    cardColor: Color(0x2A3640),
+    cardColor: Color(0xFF2A3640),
     price: 45,
   ),
 ];
@@ -52,7 +52,7 @@ final List<Vehicle> _bigCars = [
     url: "assets/images/big cars/car1.png",
     description:
         "Who hasn’t dreamt about a roadtrip? Rent this van and make your dreams come true.",
-    cardColor: Color(0x7EB0AA),
+    cardColor: Color(0xFF7EB0AA),
     price: 23,
   ),
   Vehicle(
@@ -60,7 +60,7 @@ final List<Vehicle> _bigCars = [
     url: "assets/images/big cars/car2.png",
     description:
         "Who hasn’t dreamt about a roadtrip? Rent this van and make your dreams come true.",
-    cardColor: Color(0xAD8E73),
+    cardColor: Color(0xFFAD8E73),
     price: 10,
   ),
   Vehicle(
@@ -68,7 +68,7 @@ final List<Vehicle> _bigCars = [
     url: "assets/images/big cars/car3.png",
     description:
         "Who hasn’t dreamt about a roadtrip? Rent this van and make your dreams come true.",
-    cardColor: Color(0xA34D48),
+    cardColor: Color(0xFFA34D48),
     price: 11,
   ),
   Vehicle(
@@ -76,7 +76,7 @@ final List<Vehicle> _bigCars = [
     url: "assets/images/big cars/car4.png",
     description:
         "Who hasn’t dreamt about a roadtrip? Rent this van and make your dreams come true.",
-    cardColor: Color(0xE4C970),
+    cardColor: Color(0xFFE4C970),
     price: 14,
   ),
 ];
@@ -87,7 +87,7 @@ final List<Vehicle> _bikes = [
     url: "assets/images/bikes/bike1.png",
     description:
         "They say one of the best ways to know a city is by riding a bike.",
-    cardColor: Color(0xD7913F),
+    cardColor: Color(0xFFD7913F),
     price: 23,
   ),
   Vehicle(
@@ -95,7 +95,7 @@ final List<Vehicle> _bikes = [
     url: "assets/images/bikes/bike2.png",
     description:
         "They say one of the best ways to know a city is by riding a bike.",
-    cardColor: Color(0xDF7588),
+    cardColor: Color(0xFFDF7588),
     price: 10,
   ),
   Vehicle(
@@ -103,7 +103,7 @@ final List<Vehicle> _bikes = [
     url: "assets/images/bikes/bike3.png",
     description:
         "They say one of the best ways to know a city is by riding a bike.",
-    cardColor: Color(0x60C1DC),
+    cardColor: Color(0xFF60C1DC),
     price: 11,
   ),
   Vehicle(
@@ -111,7 +111,7 @@ final List<Vehicle> _bikes = [
     url: "assets/images/bikes/bike4.png",
     description:
         "They say one of the best ways to know a city is by riding a bike.",
-    cardColor: Color(0x6C6363),
+    cardColor: Color(0xFF6C6363),
     price: 14,
   ),
 ];

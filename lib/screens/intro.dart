@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+
 import 'package:seminar_app/constants.dart';
+import 'package:seminar_app/screens/home.dart';
 
 class Intro extends StatefulWidget {
   const Intro({Key? key}) : super(key: key);
@@ -9,26 +12,44 @@ class Intro extends StatefulWidget {
 }
 
 class _IntroState extends State<Intro> {
-  final int _numPages = 3;
-  final PageController _pageController = PageController(initialPage: 0);
   int _currentPage = 0;
+  PageController _pageController = PageController(initialPage: 0);
 
-  List<Widget> _buildPageIndicator() {
-    List<Widget> list = [];
-    for (int i = 0; i < _numPages; i++) {
-      list.add(i == _currentPage ? _indicator(true) : _indicator(false));
+  List<Map<dynamic, dynamic>> data = [
+    {
+      "text": "Find Your Vehicle",
+      "subText": "Find the perfect vehicle for every occasion!",
+      "imgUrl": "assets/images/intro/intro1.png",
+      "buttonText": "Continue",
+    },
+    {
+      "text": "Your dream Car",
+      "subText": "Rent the car you’ve always wanted to drive.",
+      "imgUrl": "assets/images/intro/intro2.png",
+      "buttonText": "Continue",
+    },
+    {
+      "text": "Small Ones Too!",
+      "subText": "Rent a small vehicle for those short distances",
+      "imgUrl": "assets/images/intro/intro3.png",
+      "buttonText": "Continue",
+    },
+    {
+      "text": "Find Our Stations",
+      "subText": "Find your nearest station to rent your car!",
+      "imgUrl": "assets/images/intro/intro4.png",
+      "buttonText": "Get Started",
     }
-    return list;
-  }
+  ];
 
-  Widget _indicator(bool isActive) {
+  AnimatedContainer buildIndicator({int? index}) {
     return AnimatedContainer(
-      duration: Duration(milliseconds: 150),
+      duration: Duration(milliseconds: 200),
       margin: EdgeInsets.symmetric(horizontal: 6.0),
       height: 7.0,
       width: 25.0,
       decoration: BoxDecoration(
-        color: isActive ? kprimaryColor : ksecondaryColor,
+        color: _currentPage == index ? kprimaryColor : ksecondaryColor,
         borderRadius: BorderRadius.all(Radius.circular(12)),
       ),
     );
@@ -36,88 +57,105 @@ class _IntroState extends State<Intro> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: PageView(
-        physics: ClampingScrollPhysics(),
-        controller: _pageController,
-        onPageChanged: (int page) {
-          setState(() {
-            _currentPage = page;
-          });
-        },
-        children: <Widget>[
-          Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 68),
-                child: Text(
-                  "Beepy",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(top: 68),
-                child: Image.asset(
-                  "assets/images/intro/intro1.png",
-                  height: 319,
-                  width: 427,
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 32.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: _buildPageIndicator(),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 16.0),
-                child: Text(
-                  "Find Your Vehicle",
-                  style: TextStyle(
-                    fontSize: 24,
-                    fontWeight: FontWeight.w600,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 64.0),
-                child: Text(
-                  "Find the perfect vehicle for every occasion!",
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  ),
-                ),
-              ),
-              TextButton(
-                // style: ButtonStyle(backgroundColor: kprimaryColor),
-                onPressed: () {},
-                child: Text("Continue"),
-              ),
-            ],
-          ),
-          Column(
-            children: [
-              Text("Beepy"),
-              Image.asset("assets/images/intro/intro1.png"),
-              Container(
-                color: kprimaryColor,
-                height: 50,
-                width: 50,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: _buildPageIndicator(),
-              ),
-            ],
-          ),
-        ],
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+      value: const SystemUiOverlayStyle(
+        // For Android.
+        // Use [light] for white status bar and [dark] for black status bar.
+        statusBarIconBrightness: Brightness.dark,
+        // For iOS.
+        // Use [dark] for white status bar and [light] for black status bar.
+        statusBarBrightness: Brightness.dark,
       ),
+      child: Scaffold(
+          body: SafeArea(
+        child: ListView(
+          shrinkWrap: true,
+          children: [
+            SizedBox(height: 68.0),
+            Center(
+              child: Text(
+                "Beepy",
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ),
+            SizedBox(height: 64.0),
+            Container(
+              height: 319,
+              child: PageView.builder(
+                  controller: _pageController,
+                  onPageChanged: (page) {
+                    setState(() {
+                      _currentPage = page;
+                    });
+                  },
+                  itemCount: data.length,
+                  itemBuilder: (_, index) {
+                    return Image.asset(
+                      data[index]["imgUrl"]!,
+                    );
+                  }),
+            ),
+            SizedBox(height: 32.0),
+            Container(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: List.generate(
+                  data.length,
+                  (index) => buildIndicator(index: index),
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.fromLTRB(35.0, 32, 35.0, 64.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  Text(
+                    data[_currentPage]["text"]!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 16.0),
+                  Text(
+                    data[_currentPage]["subText"]!,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 16,
+                      fontWeight: FontWeight.w400,
+                    ),
+                  ),
+                  SizedBox(height: 64),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Home()));
+                    },
+                    style: TextButton.styleFrom(
+                      primary: Colors.white,
+                      fixedSize: Size(double.infinity, 57.0),
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(10.0)),
+                    ),
+                    child: Text(
+                      data[_currentPage]["buttonText"]!,
+                      style: TextStyle(
+                        fontSize: 16,
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      )),
     );
   }
 }

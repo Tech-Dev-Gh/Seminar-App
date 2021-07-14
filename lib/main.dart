@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:seminar_app/constants.dart';
 
-import 'screens/onboarding/intro.dart';
+import 'screens/intro.dart';
 
 void main() => runApp(SeminarApp());
 
@@ -17,6 +17,7 @@ class SeminarApp extends StatelessWidget {
         // brightness: Brightness.light,
         fontFamily: kPoppinsfont,
         primaryColor: kprimaryColor,
+        scaffoldBackgroundColor: Colors.white,
         textTheme: TextTheme(
           bodyText1: TextStyle(fontFamily: kPoppinsfont),
           bodyText2: TextStyle(fontFamily: kPoppinsfont),
