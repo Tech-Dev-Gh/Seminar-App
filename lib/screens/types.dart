@@ -73,8 +73,8 @@ class Types extends StatelessWidget {
                             top: 28.0,
                             left: MediaQuery.of(context).orientation ==
                                     Orientation.landscape
-                                ? 400.0
-                                : 106.0,
+                                ? 430.0
+                                : 110.0,
                             child: Image.asset("${items![index].url}"),
                           )
                         ],
